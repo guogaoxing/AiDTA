@@ -6,7 +6,7 @@
 ## Overview
 This project implements a policy-value network and a self-play pipeline for generating and training data for decision-making in a sequence-based task. The main components include a neural network architecture, a data collection pipeline, a Monte Carlo Tree Search (MCTS) implementation, and configuration settings.
 
-## File Descriptions
+## Code organization
 
 ### `cnn_net.py`
 This file defines the core neural network architecture, including the policy-value network and its training logic. Key components include:
@@ -71,6 +71,18 @@ list2 = [
 ]
 
 ```
+### Inference
+Use the `PolicyValueNet` class in `cnn_net.py` for making predictions on sequences and structures. For example:
+```python
+from cnn_net import PolicyValueNet
+
+model = PolicyValueNet(model_file='current_policy.pkl')
+sequence = 'AAACCCAAACCCCCCAAAAAA&GGG&GGGAAACCCCCC&GGG&GGG&GGGAAA'
+structure = '...(((...((((((......&)))&)))...((((((&)))&)))&)))...'
+act_probs, value = model.policy_value([sequence, structure])
+print("Action Probabilities:", act_probs)
+print("Value:", value)
+```
 
 #### Collect eligible sequences and train model
 1. Ensure the `CollectPipeline` class in `collect.py` is correctly initialized with a valid model path (`current_policy.pkl`) or starts with a new model.
@@ -87,20 +99,21 @@ list2 = [
 
 ```
 
-These two lists (`list1` and `list2`) will be used across the relevant scripts to perform the necessary operations.
-
-### Inference
-Use the `PolicyValueNet` class in `cnn_net.py` for making predictions on sequences and structures. For example:
-```python
-from cnn_net import PolicyValueNet
-
-model = PolicyValueNet(model_file='current_policy.pkl')
-sequence = 'AAACCCAAACCCCCCAAAAAA&GGG&GGGAAACCCCCC&GGG&GGG&GGGAAA'
-structure = '...(((...((((((......&)))&)))...((((((&)))&)))&)))...'
-act_probs, value = model.policy_value([sequence, structure])
-print("Action Probabilities:", act_probs)
-print("Value:", value)
+#### Output example:
+```bash
+TCTGTCTGGGCGACATTTGCCGTGGCCACCCAGCGAGAGCTGGGTGGCCAC ........(((((...)))))(((((((((((((....))))))))))))) ........(((.......)))(((())))(((((....)))))(((()))) 0.9215686274509804
 ```
+
+- **TCTGTCTGGGCGACATTTGCCGTGGCCACCCAGCGAGAGCTGGGTGGCCAC**: This is the **assembled sequence**, representing the nucleic acid sequence synthesized through some method (such as a deep learning model or biological experiment).
+
+- **........(((((...)))))(((((((((((((....)))))))))))))**: This is the **predicted secondary structure**, representing the secondary structure of the nucleic acid sequence predicted by a computational model. The symbols like `(` and `)` represent double-helix structures and single-stranded regions.
+
+- **........(((.......)))(((())))(((((....)))))(((())))**: This is the **assembled secondary structure**, representing the actual secondary structure obtained from the assembled sequence. This structure is derived from actual measurements or experimental methods.
+
+- **0.9215686274509804**: This is the **sequence similarity between the assembled structure and the predicted structure**, a numerical value that indicates the degree of similarity between the predicted secondary structure and the actual assembled structure. A value closer to 1 indicates higher similarity.
+
+```
+
 -----------------------------------------------------------------------------------------------------
 ```
 @article{Unpublished,
