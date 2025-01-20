@@ -101,7 +101,17 @@ act_probs, value = model.policy_value([sequence, structure])
 print("Action Probabilities:", act_probs)
 print("Value:", value)
 ```
-
+-----------------------------------------------------------------------------------------------------
+```
+@article{Unpublished,
+  title={Robust deep learning--based protein sequence design using ProteinMPNN},
+  author={Gaoxing Guo, Xiaoming He, Jiaqiang Qian, Lei wang, Xizhou Qian and Qiang Huang},
+  journal={Unpublished},
+  year={2025},
+  publisher={Unpublished}
+}
+```
+-----------------------------------------------------------------------------------------------------
 
 
 
