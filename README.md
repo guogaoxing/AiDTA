@@ -101,7 +101,7 @@ print("Value:", value)
 
 #### Output example:
 ```bash
-TCTGTCTGGGCGACATTTGCCGTGGCCACCCAGCGAGAGCTGGGTGGCCAC ........(((((...)))))(((((((((((((....))))))))))))) ........(((.......)))(((())))(((((....)))))(((()))) 0.9215686274509804
+TCTGTCTGGGCGACATTTGCCGTGGCCACCCAGCGAGAGCTGGGTGGCCAC ........(((((...)))))(((((((((((((....))))))))))))) ........(((.......)))(((())))(((((....)))))(((()))) 0.92
 ```
 
 - **TCTGTCTGGGCGACATTTGCCGTGGCCACCCAGCGAGAGCTGGGTGGCCAC**: This is the **assembled sequence**, representing the nucleic acid sequence synthesized through some method (such as a deep learning model or biological experiment).
