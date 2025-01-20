@@ -44,20 +44,8 @@ This file provides the core logic for sequence manipulation, state representatio
 
 ### Running the Project
 
-#### Collect eligible sequences and train model
-1. Ensure the `CollectPipeline` class in `collect.py` is correctly initialized with a valid model path (`current_policy.pkl`) or starts with a new model.
-2. Run the script to begin the self-play and data collection pipeline:
-   ```bash
-   python collect.py
-   ```
-3. The pipeline will continuously collect self-play data and store it in a buffer for training.
-4. Run the training script:
-   ```bash
-   python train.py
-   ```
-
-#### After Collecting and Filtering Fragments
-Once the sequence fragments and their secondary structures have been filtered, the filtered fragments and their corresponding secondary structures should be placed into `list1` and `list2` in the respective files (`game.py`, `mcts.py`, and `collect.py`). Here's an example of how these lists should look:
+#### Construction of fragment pool
+We first use 3D RNA/DNA to predict the 3D structures of single-stranded fragments of lengths 3-6 nt and double-stranded fragments of lengths 3-6 bp. Then, we use HDOCK to perform molecular docking of the fragments with the target protein. The fragments are selected based on their docking sites and scores. Once the sequence fragments and their secondary structures have been filtered, the filtered fragments and their corresponding secondary structures should be placed into `list1` and `list2` in the respective files (`game.py`, `mcts.py`, and `collect.py`). Here's an example of how these lists should look:
 
 ```python
 # Fragment list
@@ -81,6 +69,22 @@ list2 = [
     '....', '.....', '.....', '.....', '.....', '.....', '......', '......', 
     '......', '......', '......'
 ]
+
+```
+
+#### Collect eligible sequences and train model
+1. Ensure the `CollectPipeline` class in `collect.py` is correctly initialized with a valid model path (`current_policy.pkl`) or starts with a new model.
+2. Run the script to begin the self-play and data collection pipeline:
+   ```bash
+   python collect.py
+   ```
+3. The pipeline will continuously collect self-play data and store it in a buffer for training.
+4. Run the training script:
+   ```bash
+   python train.py
+   ```
+
+
 ```
 
 These two lists (`list1` and `list2`) will be used across the relevant scripts to perform the necessary operations.
