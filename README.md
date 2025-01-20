@@ -110,11 +110,11 @@ TCTGTCTGGGCGACATTTGCCGTGGCCACCCAGCGAGAGCTGGGTGGCCAC ........(((((...)))))(((((((
 
 - **........(((.......)))(((())))(((((....)))))(((())))**: This is the **assembled secondary structure**, representing the actual secondary structure obtained from the assembled sequence. This structure is derived from actual measurements or experimental methods.
 
-- **0.9215686274509804**: This is the **sequence similarity between the assembled structure and the predicted structure**, a numerical value that indicates the degree of similarity between the predicted secondary structure and the actual assembled structure. A value closer to 1 indicates higher similarity.
+- **0.92**: This is the **sequence similarity between the assembled structure and the predicted structure**, a numerical value that indicates the degree of similarity between the predicted secondary structure and the actual assembled structure. A value closer to 1 indicates higher similarity.
 
 ```
 
------------------------------------------------------------------------------------------------------
+
 ```
 @article{Unpublished,
   title={Robust deep learning--based protein sequence design using ProteinMPNN},
@@ -124,7 +124,7 @@ TCTGTCTGGGCGACATTTGCCGTGGCCACCCAGCGAGAGCTGGGTGGCCAC ........(((((...)))))(((((((
   publisher={Unpublished}
 }
 ```
------------------------------------------------------------------------------------------------------
+
 
 
 
